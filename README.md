@@ -7,7 +7,7 @@ Feel free to adjust it to your needs.
 ## To execute
 
 ```
-curl -O https://raw.githubusercontent.com/fabioalmeida08/mgpi/main/mgpi.sh && bash mgpi.sh
+curl -o- https://raw.githubusercontent.com/fabioalmeida08/mgpi/main/mgpi.sh | bash
 ```
 
 or
@@ -22,6 +22,7 @@ wget https://raw.githubusercontent.com/fabioalmeida08/mgpi/main/mgpi.sh && bash 
 - prompt to change the default text editor
 - prompt to type a email to generate a SSH key for github and copy the key to the clipboard
 - prompt to type a name for postgreSQL user and password
+- download my [weather script](https://github.com/fabioalmeida08/weatherSH) to the ~/scripts folder
 - apply my keyboard shortcuts
 - **change the CAPSLOCK KEY to have CTRL functionality , CAPSLOCK can still be used with SHIFT+CAPSLOCK**
 
@@ -32,10 +33,10 @@ wget https://raw.githubusercontent.com/fabioalmeida08/mgpi/main/mgpi.sh && bash 
 - Slack
 - Node
 - Yarn
-- Typescript 
 - Rust ❤️
 - PostgreSQL 🐘
 - Beekeeper Studio 🐝
+- Typescript 
 - Docker 🐋
 - Kitty
 - Insomnia
