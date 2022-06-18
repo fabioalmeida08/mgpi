@@ -5,16 +5,31 @@
 sudo ufw enable
 
 sudo sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 10/' /etc/pacman.conf
+sudo sed -i "s/#EnableAUR/EnableAUR/" "/etc/pamac.conf"
+sudo sed -i "s/#CheckAURUpdates/CheckAURUpdates/" "/etc/pamac.conf"
 
 # programs to install 
-sudo pacman -Syu vim ttf-fira-code qbittorrent mpv steam pavucontrol flameshot htop gnome-shell-extension-pop-shell postgresql docker docker-compose kitty rustup nodejs
+
+sudo pacman -Syu vim ttf-fira-code qbittorrent mpv steam pavucontrol flameshot htop gnome-shell-extension-pop-shell postgresql docker docker-compose kitty rustup nodejs npm python-pip
 sudo pamac install beekeeper-studio-bin insomnia-bin   
 
 # config rust
 
 rustup default stable
 
-#symbolic link for snap and install apps
+#python 
+
+pip install ipython pycodestyle
+
+#symbolic link for snap and install npm apps
+echo 'Yarn'
+sudo npm i yarn -g
+echo 'Vercel CLI'
+sudo npm i vercel -g
+echo 'Heroku CLI'
+sudo npm i heroku -g
+echo 'Typescript'
+sudo npm i typescript -g
 
 sudo ln -s /var/lib/snapd/snap /snap
 
@@ -25,21 +40,6 @@ snap info slack
 sudo snap install slack --classic 
 
 
-echo 'Yarn'
-sudo npm i yarn -g
-# echo 'Vercel CLI'
-# sudo yarn global add vercel
-# echo 'Heroku CLI'
-# sudo yarn global add heroku
-# echo 'Typescript <3'
-# sudo yarn global add typescript
-
-echo 'Vercel CLI'
-sudo npm i vercel -g
-echo 'Heroku CLI'
-sudo npm i heroku -g
-echo 'Typescript <3'
-sudo npm i typescript -g
 
 #setup default text editor with zsh
 
@@ -141,6 +141,31 @@ echo
 echo https://github.com/settings/keys
 echo
 
+#kitty config
+echo "include ./theme.conf" > $HOME/.config/kitty/kitty.conf
+
+echo "background            #212224
+foreground            #ededed
+cursor                #dfd9b8
+selection_background  #384563
+color0                #000000
+color8                #5c4f49
+color1                #cf0d17
+color9                #ef7d17
+color2                #128033
+color10               #b1d130
+color3                #ffca3d
+color11               #fff11f
+color4                #006ab3
+color12               #4fc2fd
+color5                #6a2674
+color13               #de0070
+color6                #384563
+color14               #5c4f49
+color7                #ededed
+color15               #fefffe
+selection_foreground #212224" > $HOME/.config/kitty/theme.conf
+
 # docker config
 
 sudo systemctl enable --now docker.service
@@ -188,28 +213,6 @@ psql -c \"CREATE USER $postgre_user_name SUPERUSER CREATEROLE CREATEDB PASSWORD 
 psql -c \"CREATE DATABASE $postgre_user_name \"
 " postgres 
 
-#kitty config
-echo "background            #212224
-foreground            #ededed
-cursor                #dfd9b8
-selection_background  #384563
-color0                #000000
-color8                #5c4f49
-color1                #cf0d17
-color9                #ef7d17
-color2                #128033
-color10               #b1d130
-color3                #ffca3d
-color11               #fff11f
-color4                #006ab3
-color12               #4fc2fd
-color5                #6a2674
-color13               #de0070
-color6                #384563
-color14               #5c4f49
-color7                #ededed
-color15               #fefffe
-selection_foreground #212224" > $HOME/.config/kitty/theme.conf
 
 #keyboard shortcuts
 
