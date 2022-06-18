@@ -32,7 +32,8 @@ wget https://raw.githubusercontent.com/fabioalmeida08/mgpi/main/mgpi.sh && bash 
 - Slack
 - Node
 - Yarn
-- Typescript ❤️
+- Typescript 
+- Rust ❤️
 - PostgreSQL 🐘
 - Beekeeper Studio 🐝
 - Docker 🐋
