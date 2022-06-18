@@ -6,8 +6,14 @@ sudo ufw enable
 
 sudo sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 10/' /etc/pacman.conf
 
-sudo pacman -Syu vim ttf-fira-code qbittorrent mpv steam pavucontrol flameshot htop gnome-shell-extension-pop-shell postgresql docker docker-compose kitty
- 
+# programs to install 
+sudo pacman -Syu vim ttf-fira-code qbittorrent mpv steam pavucontrol flameshot htop gnome-shell-extension-pop-shell postgresql docker docker-compose kitty rustup nodejs
+sudo pamac install beekeeper-studio-bin insomnia-bin   
+
+# config rust
+
+rustup default stable
+
 #symbolic link for snap and install apps
 
 sudo ln -s /var/lib/snapd/snap /snap
@@ -18,14 +24,6 @@ sudo snap install code --classic
 snap info slack
 sudo snap install slack --classic 
 
-snap info node
-sudo snap install node --classic
-
-snap info beekeeper-studio
-sudo snap install beekeeper-studio
-
-snap info insomnia
-sudo snap install insomnia
 
 echo 'Yarn'
 sudo npm i yarn -g
@@ -152,7 +150,6 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 
 
-
 # postgresql config
 
 echo "en_US.UTF-8 UTF-8" | sudo tee /etc/locale.gen
@@ -191,8 +188,30 @@ psql -c \"CREATE USER $postgre_user_name SUPERUSER CREATEROLE CREATEDB PASSWORD 
 psql -c \"CREATE DATABASE $postgre_user_name \"
 " postgres 
 
-#keyboard shortcuts
+#kitty config
+echo "background            #212224
+foreground            #ededed
+cursor                #dfd9b8
+selection_background  #384563
+color0                #000000
+color8                #5c4f49
+color1                #cf0d17
+color9                #ef7d17
+color2                #128033
+color10               #b1d130
+color3                #ffca3d
+color11               #fff11f
+color4                #006ab3
+color12               #4fc2fd
+color5                #6a2674
+color13               #de0070
+color6                #384563
+color14               #5c4f49
+color7                #ededed
+color15               #fefffe
+selection_foreground #212224" > $HOME/.config/kitty/theme.conf
 
+#keyboard shortcuts
 
 echo "[org/gnome/settings-daemon/plugins/media-keys]
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
@@ -216,4 +235,8 @@ name='Pavu control'" > $HOME/.config/dconf/keybinds.conf
 
 dconf load / < $HOME/.config/dconf/keybinds.conf
 
+# docker group config
 newgrp docker
+
+# cronnie start with system
+sudo systemctl start --now cronie
